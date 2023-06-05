@@ -6,8 +6,8 @@
 #include "orbiting_body.h"
 #include "gravitating_body.h"
 
-#define SCREEN_WIDTH 600
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 900
 #define MIN_ORBITING_BODY_RADIUS 0.1
 #define MAX_ORBITING_BODY_RADIUS 4.0
 #define ORBIT_SPEED 10.0
@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
 
     srand(time(NULL));
 
-    int centerX = SCREEN_WIDTH / 2;
-    int centerY = SCREEN_HEIGHT / 2;
+    int center_x = SCREEN_WIDTH / 2;
+    int center_y = SCREEN_HEIGHT / 2;
 
     const int NUM_ORBITING_BODIES = 5024;
     OrbitingBody orbitingBodies[NUM_ORBITING_BODIES];
@@ -62,10 +62,18 @@ int main(int argc, char *argv[])
         r = pow(r, 20);
         body.radius = r * MAX_ORBITING_BODY_RADIUS + MIN_ORBITING_BODY_RADIUS;
 
-        double x = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
-        double y = ((double)rand() / (double)RAND_MAX) * (SCREEN_HEIGHT - 200) + 100;
+        r = (double)rand() / (double)RAND_MAX;
+        // shift r so its between 0.1 and 0.9 use within
+        double within = 0.2;
+        r = r * (1.0 - within * 2.0) + within;
+        double x = r * SCREEN_WIDTH;
+        r = (double)rand() / (double)RAND_MAX;
+        r = r * (1.0 - within * 2.0) + within;
+        double y = r * SCREEN_HEIGHT;
+        body.initialX = x;
+        body.initialY = y;
 
-        double dist_to_center = sqrt(pow(x - centerX, 2) + pow(y - centerY, 2));
+        double dist_to_center = sqrt(pow(x - center_x, 2) + pow(y - center_y, 2));
 
         // random number between -0.1 and 1.0
         r = (double)rand() / (double)RAND_MAX * 1.1 - 0.1;
@@ -76,10 +84,7 @@ int main(int argc, char *argv[])
         double dist_penalty = 1.0 / ((dist_to_center * dist_to_center) * 1000.0);
         body.speed = speed * radius_penalty * dist_penalty;
 
-        body.initialX = x;
-        body.initialY = y;
-
-        body.distanceToCenter = sqrt(pow(body.initialX - centerX, 2) + pow(body.initialY - centerY, 2));
+        body.distanceToCenter = dist_to_center;
 
         orbitingBodies[i] = body;
     }
@@ -114,15 +119,15 @@ int main(int argc, char *argv[])
         for (int i = 0; i < NUM_ORBITING_BODIES; ++i)
         {
             OrbitingBody *body = &orbitingBodies[i];
-            orbiting_body_step(body, centerX, centerY, ORBIT_SPEED);
+            orbiting_body_step(body, center_x, center_y, ORBIT_SPEED);
             orbiting_body_draw(body, renderer);
         }
 
         for (int i = 0; i < NUM_GRAVITATING_BODIES; ++i)
         {
             GravitatingBody *body = &gravitatingBodies[i];
-            gravitating_body_step(body, centerX, centerY, GRAVITY_STRENGTH);
-            gravitating_body_draw(body, renderer, centerX, centerY, GRAVITY_STRENGTH);
+            gravitating_body_step(body, center_x, center_y, GRAVITY_STRENGTH);
+            gravitating_body_draw(body, renderer, center_x, center_y, GRAVITY_STRENGTH);
         }
 
         SDL_RenderPresent(renderer);
