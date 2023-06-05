@@ -129,77 +129,77 @@ program/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/build
 .PHONY : program/fast
 
-gravitating_body.o: gravitating_body.c.o
-.PHONY : gravitating_body.o
+src/gravitating_body.o: src/gravitating_body.c.o
+.PHONY : src/gravitating_body.o
 
 # target to build an object file
-gravitating_body.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.o
-.PHONY : gravitating_body.c.o
+src/gravitating_body.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/gravitating_body.c.o
+.PHONY : src/gravitating_body.c.o
 
-gravitating_body.i: gravitating_body.c.i
-.PHONY : gravitating_body.i
+src/gravitating_body.i: src/gravitating_body.c.i
+.PHONY : src/gravitating_body.i
 
 # target to preprocess a source file
-gravitating_body.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.i
-.PHONY : gravitating_body.c.i
+src/gravitating_body.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/gravitating_body.c.i
+.PHONY : src/gravitating_body.c.i
 
-gravitating_body.s: gravitating_body.c.s
-.PHONY : gravitating_body.s
+src/gravitating_body.s: src/gravitating_body.c.s
+.PHONY : src/gravitating_body.s
 
 # target to generate assembly for a file
-gravitating_body.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.s
-.PHONY : gravitating_body.c.s
+src/gravitating_body.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/gravitating_body.c.s
+.PHONY : src/gravitating_body.c.s
 
-main.o: main.c.o
-.PHONY : main.o
+src/main.o: src/main.c.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.o
-.PHONY : main.c.o
+src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-main.i: main.c.i
-.PHONY : main.i
+src/main.i: src/main.c.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.i
-.PHONY : main.c.i
+src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-main.s: main.c.s
-.PHONY : main.s
+src/main.s: src/main.c.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.s
-.PHONY : main.c.s
+src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/main.c.s
+.PHONY : src/main.c.s
 
-orbiting_body.o: orbiting_body.c.o
-.PHONY : orbiting_body.o
+src/orbiting_body.o: src/orbiting_body.c.o
+.PHONY : src/orbiting_body.o
 
 # target to build an object file
-orbiting_body.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.o
-.PHONY : orbiting_body.c.o
+src/orbiting_body.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/orbiting_body.c.o
+.PHONY : src/orbiting_body.c.o
 
-orbiting_body.i: orbiting_body.c.i
-.PHONY : orbiting_body.i
+src/orbiting_body.i: src/orbiting_body.c.i
+.PHONY : src/orbiting_body.i
 
 # target to preprocess a source file
-orbiting_body.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.i
-.PHONY : orbiting_body.c.i
+src/orbiting_body.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/orbiting_body.c.i
+.PHONY : src/orbiting_body.c.i
 
-orbiting_body.s: orbiting_body.c.s
-.PHONY : orbiting_body.s
+src/orbiting_body.s: src/orbiting_body.c.s
+.PHONY : src/orbiting_body.s
 
 # target to generate assembly for a file
-orbiting_body.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.s
-.PHONY : orbiting_body.c.s
+src/orbiting_body.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/orbiting_body.c.s
+.PHONY : src/orbiting_body.c.s
 
 # Help Target
 help:
@@ -210,15 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... program"
-	@echo "... gravitating_body.o"
-	@echo "... gravitating_body.i"
-	@echo "... gravitating_body.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... orbiting_body.o"
-	@echo "... orbiting_body.i"
-	@echo "... orbiting_body.s"
+	@echo "... src/gravitating_body.o"
+	@echo "... src/gravitating_body.i"
+	@echo "... src/gravitating_body.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/orbiting_body.o"
+	@echo "... src/orbiting_body.i"
+	@echo "... src/orbiting_body.s"
 .PHONY : help
 
 

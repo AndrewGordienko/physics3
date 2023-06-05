@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/andrew/Desktop/physics3/gravitating_body.c" "CMakeFiles/program.dir/gravitating_body.c.o" "gcc" "CMakeFiles/program.dir/gravitating_body.c.o.d"
-  "/home/andrew/Desktop/physics3/main.c" "CMakeFiles/program.dir/main.c.o" "gcc" "CMakeFiles/program.dir/main.c.o.d"
-  "/home/andrew/Desktop/physics3/orbiting_body.c" "CMakeFiles/program.dir/orbiting_body.c.o" "gcc" "CMakeFiles/program.dir/orbiting_body.c.o.d"
+  "/home/andrew/Desktop/physics3/src/gravitating_body.c" "CMakeFiles/program.dir/src/gravitating_body.c.o" "gcc" "CMakeFiles/program.dir/src/gravitating_body.c.o.d"
+  "/home/andrew/Desktop/physics3/src/main.c" "CMakeFiles/program.dir/src/main.c.o" "gcc" "CMakeFiles/program.dir/src/main.c.o.d"
+  "/home/andrew/Desktop/physics3/src/orbiting_body.c" "CMakeFiles/program.dir/src/orbiting_body.c.o" "gcc" "CMakeFiles/program.dir/src/orbiting_body.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
