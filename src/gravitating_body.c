@@ -1,5 +1,6 @@
 #include "gravitating_body.h"
 #include <math.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
 
 void gravitating_body_step(GravitatingBody* body, int centerX, int centerY, double strength) {
     if (body->isAttracted) {
