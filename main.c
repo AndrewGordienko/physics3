@@ -9,6 +9,7 @@
 #define SCREEN_HEIGHT 600
 #define ORBIT_RADIUS 200.0
 #define ORBIT_SPEED 0.01
+#define GRAVITY_STRENGTH 0.5
 
 typedef struct {
     double angle;
@@ -16,6 +17,7 @@ typedef struct {
     double initialY;
     double distanceToCenter;
     double radius;
+    int isAttracted;  // Flag to indicate if the body is attracted to the center
 } Shape;
 
 int main(int argc, char* argv[]) {
@@ -53,6 +55,7 @@ int main(int argc, char* argv[]) {
         Shape shape;
         shape.angle = ((double)rand() / (double)RAND_MAX) * 2.0 * M_PI;
         shape.radius = 20.0;
+        shape.isAttracted = rand() % 2;  // Randomly set if the body is attracted to the center
 
         shape.initialX = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
         shape.initialY = ((double)rand() / (double)RAND_MAX) * (SCREEN_HEIGHT - 200) + 100;
@@ -80,6 +83,17 @@ int main(int argc, char* argv[]) {
             shape->angle += ORBIT_SPEED;
             shape->initialX = centerX + shape->distanceToCenter * cos(shape->angle);
             shape->initialY = centerY + shape->distanceToCenter * sin(shape->angle);
+
+            if (shape->isAttracted) {
+                double dx = centerX - shape->initialX;
+                double dy = centerY - shape->initialY;
+                double distance = sqrt(dx * dx + dy * dy);
+                double directionX = dx / distance;
+                double directionY = dy / distance;
+
+                shape->initialX += directionX * GRAVITY_STRENGTH * distance;
+                shape->initialY += directionY * GRAVITY_STRENGTH * distance;
+            }
 
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             filledCircleColor(renderer, (int)shape->initialX, (int)shape->initialY, (int)shape->radius, 0xFFFFFFFF);
