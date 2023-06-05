@@ -9,10 +9,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/andrew/Desktop/physics3/CMakeLists.txt"
   "CMakeFiles/3.26.4/CMakeCCompiler.cmake"
-  "CMakeFiles/3.26.4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.26.4/CMakeSystem.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeCInformation.cmake"
-  "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeCXXInformation.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeGenericSystem.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake"
@@ -21,13 +19,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/cmake/1299/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Compiler/GNU-C.cmake"
-  "/snap/cmake/1299/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Compiler/GNU.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Platform/Linux-GNU-C.cmake"
-  "/snap/cmake/1299/share/cmake-3.26/Modules/Platform/Linux-GNU-CXX.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Platform/Linux-GNU.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Platform/Linux.cmake"
   "/snap/cmake/1299/share/cmake-3.26/Modules/Platform/UnixPaths.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
   )
 
 # The corresponding makefile is:
@@ -43,5 +40,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/hello_world.dir/DependInfo.cmake"
+  "CMakeFiles/program.dir/DependInfo.cmake"
   )

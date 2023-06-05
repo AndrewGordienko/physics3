@@ -3,20 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
+#include "orbiting_body.h"
+#include "gravitating_body.h"
 
 #define SCREEN_WIDTH 600
 #define SCREEN_HEIGHT 600
 #define ORBIT_RADIUS 200.0
 #define ORBIT_SPEED 0.01
-
-typedef struct {
-    double angle;
-    double initialX;
-    double initialY;
-    double distanceToCenter;
-    double radius;
-} Shape;
+#define GRAVITY_STRENGTH 1
 
 int main(int argc, char* argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -47,19 +41,30 @@ int main(int argc, char* argv[]) {
     int centerX = SCREEN_WIDTH / 2;
     int centerY = SCREEN_HEIGHT / 2;
 
-    const int NUM_SHAPES = 10;
-    Shape shapes[NUM_SHAPES];
-    for (int i = 0; i < NUM_SHAPES; ++i) {
-        Shape shape;
-        shape.angle = ((double)rand() / (double)RAND_MAX) * 2.0 * M_PI;
-        shape.radius = 20.0;
+    const int NUM_ORBITING_BODIES = 10;
+    OrbitingBody orbitingBodies[NUM_ORBITING_BODIES];
+    for (int i = 0; i < NUM_ORBITING_BODIES; ++i) {
+        OrbitingBody body;
+        body.angle = ((double)rand() / (double)RAND_MAX) * 2.0 * M_PI;
+        body.radius = 20.0;
 
-        shape.initialX = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
-        shape.initialY = ((double)rand() / (double)RAND_MAX) * (SCREEN_HEIGHT - 200) + 100;
+        body.initialX = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
+        body.initialY = ((double)rand() / (double)RAND_MAX) * (SCREEN_HEIGHT - 200) + 100;
 
-        shape.distanceToCenter = sqrt(pow(shape.initialX - centerX, 2) + pow(shape.initialY - centerY, 2));
+        body.distanceToCenter = sqrt(pow(body.initialX - centerX, 2) + pow(body.initialY - centerY, 2));
 
-        shapes[i] = shape;
+        orbitingBodies[i] = body;
+    }
+
+    const int NUM_GRAVITATING_BODIES = 5;
+    GravitatingBody gravitatingBodies[NUM_GRAVITATING_BODIES];
+    for (int i = 0; i < NUM_GRAVITATING_BODIES; ++i) {
+        GravitatingBody body;
+        body.initialX = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
+        body.initialY = ((double)rand() / (double)RAND_MAX) * (SCREEN_HEIGHT - 200) + 100;
+        body.isAttracted = rand() % 2;  // Randomly set if the body is attracted to the center
+
+        gravitatingBodies[i] = body;
     }
 
     int isRunning = 1;
@@ -74,15 +79,16 @@ int main(int argc, char* argv[]) {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
-        for (int i = 0; i < NUM_SHAPES; ++i) {
-            Shape* shape = &shapes[i];
+        for (int i = 0; i < NUM_ORBITING_BODIES; ++i) {
+            OrbitingBody* body = &orbitingBodies[i];
+            orbiting_body_step(body, centerX, centerY, ORBIT_SPEED);
+            orbiting_body_draw(body, renderer);
+        }
 
-            shape->angle += ORBIT_SPEED;
-            shape->initialX = centerX + shape->distanceToCenter * cos(shape->angle);
-            shape->initialY = centerY + shape->distanceToCenter * sin(shape->angle);
-
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            filledCircleColor(renderer, (int)shape->initialX, (int)shape->initialY, (int)shape->radius, 0xFFFFFFFF);
+        for (int i = 0; i < NUM_GRAVITATING_BODIES; ++i) {
+            GravitatingBody* body = &gravitatingBodies[i];
+            gravitating_body_step(body, centerX, centerY, GRAVITY_STRENGTH);
+            gravitating_body_draw(body, renderer, centerX, centerY, GRAVITY_STRENGTH);
         }
 
         SDL_RenderPresent(renderer);

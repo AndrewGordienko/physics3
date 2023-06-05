@@ -117,24 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello_world
+# Target rules for targets named program
 
 # Build rule for target.
-hello_world: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello_world
-.PHONY : hello_world
+program: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 program
+.PHONY : program
 
 # fast build rule for target.
-hello_world/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_world.dir/build.make CMakeFiles/hello_world.dir/build
-.PHONY : hello_world/fast
+program/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/build
+.PHONY : program/fast
+
+gravitating_body.o: gravitating_body.c.o
+.PHONY : gravitating_body.o
+
+# target to build an object file
+gravitating_body.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.o
+.PHONY : gravitating_body.c.o
+
+gravitating_body.i: gravitating_body.c.i
+.PHONY : gravitating_body.i
+
+# target to preprocess a source file
+gravitating_body.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.i
+.PHONY : gravitating_body.c.i
+
+gravitating_body.s: gravitating_body.c.s
+.PHONY : gravitating_body.s
+
+# target to generate assembly for a file
+gravitating_body.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/gravitating_body.c.s
+.PHONY : gravitating_body.c.s
 
 main.o: main.c.o
 .PHONY : main.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_world.dir/build.make CMakeFiles/hello_world.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -142,7 +166,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_world.dir/build.make CMakeFiles/hello_world.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -150,8 +174,32 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_world.dir/build.make CMakeFiles/hello_world.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/main.c.s
 .PHONY : main.c.s
+
+orbiting_body.o: orbiting_body.c.o
+.PHONY : orbiting_body.o
+
+# target to build an object file
+orbiting_body.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.o
+.PHONY : orbiting_body.c.o
+
+orbiting_body.i: orbiting_body.c.i
+.PHONY : orbiting_body.i
+
+# target to preprocess a source file
+orbiting_body.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.i
+.PHONY : orbiting_body.c.i
+
+orbiting_body.s: orbiting_body.c.s
+.PHONY : orbiting_body.s
+
+# target to generate assembly for a file
+orbiting_body.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/orbiting_body.c.s
+.PHONY : orbiting_body.c.s
 
 # Help Target
 help:
@@ -161,10 +209,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hello_world"
+	@echo "... program"
+	@echo "... gravitating_body.o"
+	@echo "... gravitating_body.i"
+	@echo "... gravitating_body.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... orbiting_body.o"
+	@echo "... orbiting_body.i"
+	@echo "... orbiting_body.s"
 .PHONY : help
 
 

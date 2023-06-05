@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=HelloWorld
+CMAKE_PROJECT_NAME:STATIC=physics3
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -221,11 +221,23 @@ HelloWorld_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 HelloWorld_SOURCE_DIR:STATIC=/home/andrew/Desktop/physics3
 
+//The directory containing a CMake configuration file for SDL2.
+SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
+
 //Path to a library.
 SDLMAIN_LIBRARY:FILEPATH=SDLMAIN_LIBRARY-NOTFOUND
 
 //Path to a file.
 SDL_INCLUDE_DIR:PATH=SDL_INCLUDE_DIR-NOTFOUND
+
+//Value Computed by CMake
+physics3_BINARY_DIR:STATIC=/home/andrew/Desktop/physics3/build
+
+//Value Computed by CMake
+physics3_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+physics3_SOURCE_DIR:STATIC=/home/andrew/Desktop/physics3
 
 
 ########################
