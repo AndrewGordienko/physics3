@@ -8,9 +8,9 @@
 
 #define SCREEN_WIDTH 600
 #define SCREEN_HEIGHT 600
-#define MIN_ORBITING_BODY_RADIUS 0.2
-#define MAX_ORBITING_BODY_RADIUS 5
-#define ORBIT_SPEED 0.1
+#define MIN_ORBITING_BODY_RADIUS 0.1
+#define MAX_ORBITING_BODY_RADIUS 4.0
+#define ORBIT_SPEED 10.0
 #define GRAVITY_STRENGTH 1
 
 int main(int argc, char *argv[])
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     int centerX = SCREEN_WIDTH / 2;
     int centerY = SCREEN_HEIGHT / 2;
 
-    const int NUM_ORBITING_BODIES = 1024;
+    const int NUM_ORBITING_BODIES = 5024;
     OrbitingBody orbitingBodies[NUM_ORBITING_BODIES];
     for (int i = 0; i < NUM_ORBITING_BODIES; ++i)
     {
@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
 
         // random number between 0.0 and 1.0
         r = (double)rand() / (double)RAND_MAX;
+        // with a bias towards smaller bodies
+        r = pow(r, 20);
         body.radius = r * MAX_ORBITING_BODY_RADIUS + MIN_ORBITING_BODY_RADIUS;
 
         double x = ((double)rand() / (double)RAND_MAX) * (SCREEN_WIDTH - 200) + 100;
@@ -69,8 +71,10 @@ int main(int argc, char *argv[])
         r = (double)rand() / (double)RAND_MAX * 1.1 - 0.1;
         double speed = r * ORBIT_SPEED;
 
-        // speed is proportional to the distance to the center
-        body.speed = speed / (dist_to_center * dist_to_center) * 5000.0;
+        // speed is proportional to the distance to the center, and the radius of the body
+        double radius_penalty = 1.0 / (body.radius * 0.001);
+        double dist_penalty = 1.0 / ((dist_to_center * dist_to_center) * 1000.0);
+        body.speed = speed * radius_penalty * dist_penalty;
 
         body.initialX = x;
         body.initialY = y;
